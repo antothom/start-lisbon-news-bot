@@ -1,7 +1,3 @@
-Sure! Here's a comprehensive README for your `start-lisbon-newsletter` repository:
-
----
-
 # START Lisbon Newsletter Automation
 
 Welcome to the START Lisbon Newsletter Automation repository. This project is designed to automate the process of aggregating, categorizing, and generating newsletters for the START Lisbon community. By leveraging web scraping, machine learning, and the OpenAI API, this project aims to streamline the creation of high-quality, relevant newsletters.
@@ -111,7 +107,3 @@ Contributions are welcome! Please read the [CONTRIBUTING.md](CONTRIBUTING.md) fi
 ## License
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
-
----
-
-Feel free to customize this README further based on specific functionalities or tools used in your project.
