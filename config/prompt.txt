@@ -43,7 +43,7 @@ The JSON Structure MUST look like the following:
       "Link": ""
     }
   ],
-  "Readings": [
+  "Resources": [
     {
       "Title": "",
       "Summary": "",

@@ -1,12 +1,15 @@
 from openai import OpenAI
-from dotenv import load_dotenv
+from dotenv import dotenv_values
+import json
+import pandas as pd
 
 class DataExtractor:
     def __init__(self, entry, source_name, prompt):
         self.entry = entry
         self.source_name = source_name
         self.prompt = prompt
-        self.client = OpenAI(api_key='')
+        self.config = dotenv_values('.env')
+        self.client = OpenAI(api_key=self.config.get('OPENAI_API_KEY'))
 
     def extract(self):
         entry = self.entry
@@ -26,7 +29,7 @@ class DataExtractor:
                 }
             ],
             temperature=1,
-            max_tokens=2048,
+            max_tokens=5000,
             top_p=1,
             frequency_penalty=0,
             presence_penalty=0,
@@ -38,3 +41,12 @@ class DataExtractor:
         response_text = response.choices[0].message.content
 
         return response_text
+
+    def text_to_df(self, text):
+        data = json.loads(text)
+        data_df = {}
+        for key in data:
+            data_df[key] = pd.DataFrame(data[key])
+            data_df[key]['Source'] = self.source_name
+
+        return data_df
