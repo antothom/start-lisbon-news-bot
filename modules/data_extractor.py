@@ -12,6 +12,7 @@ class DataExtractor:
         self.client = OpenAI(api_key=self.config.get('OPENAI_API_KEY'))
 
     def extract(self):
+        print("Extracting data with ChatGPT...")
         entry = self.entry
         prompt = self.prompt
 
@@ -39,14 +40,17 @@ class DataExtractor:
         )
 
         response_text = response.choices[0].message.content
+        print("Data extracted successfully!\n")
 
         return response_text
 
     def text_to_df(self, text):
+        print("Converting extracted data to DataFrames...")
         data = json.loads(text)
         data_df = {}
         for key in data:
             data_df[key] = pd.DataFrame(data[key])
             data_df[key]['Source'] = self.source_name
 
+        print("Data converted to DataFrames successfully!\n")
         return data_df

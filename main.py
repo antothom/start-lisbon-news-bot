@@ -36,7 +36,8 @@ def main():
                         airtable_manager.add_event(all_dfs[i].loc[j, 'Title'],
                                                    all_dfs[i].loc[j, 'Summary'],
                                                    all_dfs[i].loc[j, 'Link'],
-                                                   all_dfs[i].loc[j, 'Date'],
+                                                   all_dfs[i].loc[j, 'Start Date'],
+                                                   all_dfs[i].loc[j, 'End Date'],
                                                    all_dfs[i].loc[j, 'Source'])
                     elif i == 'Jobs':
                         airtable_manager.add_job(all_dfs[i].loc[j, 'Title'],
