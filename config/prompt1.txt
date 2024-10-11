@@ -1,3 +1,7 @@
+--- Newsletter 1 --- Startup Portugal ---
+link: https://us3.campaign-archive.com/home/?u=13f01982f8db2e3855407c131&id=f8c9c695c3
+
+Prompt:
 The following content is a Newsletter with different Sections, which has to be formatted into a JSON format and hold the information about each part sub-parts of the newsletter.
 
 In this case, the Newsletter is of Startup Portugal, a Portuguese Incubator/Accelerator which publishes a Bi-Weekly Newsletter about the Portuguese Startup Ecosystem.
@@ -13,7 +17,11 @@ Usually the Newsletter has the following structure:
 
 Sometimes, one might find a section called i.e. “Shameless Self Promotion” - this is unwanted and not relevant for this extraction.
 
-Make sure that text is formatted right. Text in caps is unwanted, dates should have a computer readable format etc…
+Ensure text is formatted properly:
+- Dates should be in a computer-readable format (e.g., YYYY-MM-DD).
+- Avoid text in all caps.
+- Hyperlinks should be included in the appropriate "Link" field.
+- Return only the required output with no extraneous text before or after the actual result.+
 
 Make sure you don’t return anything else but the wanted output. Text before or after the actual wanted result is undesired.
 
@@ -47,6 +55,13 @@ The JSON Structure MUST look like the following:
     {
       "Title": "",
       "Summary": "",
+      "Link": ""
+    }
+  ],
+  "Jobs": [
+    {
+      "Company": "",
+      "Position": "",
       "Link": ""
     }
   ]
