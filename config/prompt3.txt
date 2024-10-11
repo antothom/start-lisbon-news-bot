@@ -1,0 +1,70 @@
+--- Newsletter 3 --- babyvc ---
+https://babyvc.substack.com/
+
+Prompt:
+The following content is a Newsletter with different Sections, which has to be formatted into a JSON format and hold the information about each part sub-parts of the newsletter.
+
+In this case, the Newsletter is from Baby VC, and it typically shares insights and updates related to venture capital, startup investments, and the tech ecosystem.
+
+Usually the Newsletter has the following structure:
+
+1. "🔍 Topics we'll cover this week" – An overview of the main subjects, often including sections on fundraising, startups, tech news, etc. (Maps to "News") [Relevant]
+2. "🤑 Fundraisings of the week" – Key updates on significant fundraising activities in the startup or tech sector. (Maps to "Opportunities") [Relevant]
+3. "🔥 Up-and-coming startups to watch" – A spotlight on new startups gaining traction or making headlines. (Maps to "News") [Relevant]
+4. "📰 News of the week" – Highlights of broader tech and business news. (Maps to "News") [Relevant]
+5. "👔 Internships & job offers" – A listing of internships and job opportunities within the startup and VC space. (Maps to "Jobs") [Relevant]
+6. "👀 In case you missed it" – Recaps of past important announcements or content from previous newsletters. (Maps to "News") [Relevant]
+
+Additionally, some newsletters may contain sections that do not match the predefined categories (e.g., "News," "Opportunities," "Events," "Readings," or "Jobs"). If this occurs, leave the fields for the non-relevant section empty in the JSON structure but maintain the consistent format.
+
+Ensure text is formatted properly:
+- Dates should be in a computer-readable format (e.g., YYYY-MM-DD).
+- Avoid text in all caps.
+- Hyperlinks should be included in the appropriate "Link" field.
+- Return only the required output with no extraneous text before or after the actual result.+
+
+Make sure you don’t return anything else but the wanted output. Text before or after the actual wanted result is undesired.
+
+The JSON Structure MUST look like the following:
+
+{
+  "News": [
+    {
+      "Title": "",
+      "Summary": "",
+      "Link": ""
+    }
+  ],
+  "Opportunities": [
+    {
+      "Title": "",
+      "Date": "",
+      "Summary": "",
+      "Link": ""
+    }
+  ],
+  "Events": [
+    {
+      "Title": "",
+      "Date": "",
+      "Summary": "",
+      "Link": ""
+    }
+  ],
+  "Readings": [
+    {
+      "Title": "",
+      "Summary": "",
+      "Link": ""
+    }
+  ],
+  "Jobs": [
+    {
+      "Company": "",
+      "Position": "",
+      "Link": ""
+    }
+  ]
+}
+
+Raw HTML Content:

@@ -1,0 +1,68 @@
+--- Newsletter 4 --- Impact Hub Lisbon
+https://us3.campaign-archive.com/home/?u=e432af040aafcb451b08bcf76&id=357b8b402e
+
+Prompt
+The following content is a Newsletter with different Sections, which has to be formatted into a JSON format and hold the information about each part sub-parts of the newsletter.
+
+In this case, the Newsletter is from Impact Hub Lisbon, and the structure may vary greatly across different editions. Each newsletter contains community updates, programs, initiatives, events, and opportunities relevant to the Impact Hub ecosystem.
+
+Since the newsletter structure is flexible, ensure that the found information is distributed across the following JSON fields:
+
+1. "News" – Any community updates, new member announcements, space openings, or collaborations should be mapped here.
+2. "Opportunities" – Information about entrepreneurship programs, competitions, or funding initiatives should be mapped here.
+3. "Events" – Upcoming events, networking opportunities, and relevant community gatherings should be placed here.
+4. "Jobs" – All job offers or openings related to Impact Hub or its partners should go into this section.
+5. "Readings" – Any recommended readings, reports, or content meant for further exploration should be categorized here.
+
+Some newsletters may contain sections that do not fit into these predefined categories. If this occurs, leave those fields empty but keep the structure intact.
+Ensure text is formatted properly:
+- Dates should be in a computer-readable format (e.g., YYYY-MM-DD).
+- Avoid text in all caps.
+- Hyperlinks should be included in the appropriate "Link" field.
+- Return only the required output with no extraneous text before or after the actual result.+
+
+Make sure you don’t return anything else but the wanted output. Text before or after the actual wanted result is undesired.
+
+The JSON Structure MUST look like the following:
+
+{
+  "News": [
+    {
+      "Title": "",
+      "Summary": "",
+      "Link": ""
+    }
+  ],
+  "Opportunities": [
+    {
+      "Title": "",
+      "Date": "",
+      "Summary": "",
+      "Link": ""
+    }
+  ],
+  "Events": [
+    {
+      "Title": "",
+      "Date": "",
+      "Summary": "",
+      "Link": ""
+    }
+  ],
+  "Readings": [
+    {
+      "Title": "",
+      "Summary": "",
+      "Link": ""
+    }
+  ],
+  "Jobs": [
+    {
+      "Company": "",
+      "Position": "",
+      "Link": ""
+    }
+  ]
+}
+
+Raw HTML Content:
