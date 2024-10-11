@@ -6,7 +6,7 @@ Usually the Newsletter has the following structure:
 
 1. “Opening Remarks” - Opener to the Newsletter (Not needed)
 2.  “Ecosystem Stream” - What has happened in the Portugueses Startup Ecosystem lately like funding etc. (Relevant)
-3. “Opportunity Radar” - Upcoming Innovation Programs, Challenges, Hackathons etc. in the Portuguese Startup Ecosystem (Relevant)
+3. “Opportunity Radar” - Upcoming Innovation Programs, Challenges, Hackathons etc. in the Portuguese Startup Ecosystem (Relevant - Should be classified as Events)
 4. “Events for your agenda” - Upcoming Conferences or Events in the Portuguese Startup Ecosystem (Relevant)
 5. “Memeable” - Memes (Not needed)
 6. “Readable” - Interesting Readings about the worldwide Startup Scene (Relevant)
@@ -17,20 +17,14 @@ Make sure that text is formatted right. Text in caps is unwanted, dates should h
 
 Make sure you don’t return anything else but the wanted output. Text before or after the actual wanted result is undesired.
 
+IMPORTANT: If the html does not start with "Opening Remarks" and does not follow the previously mentioned structure, return a JSON object just having a empty list for Events, News and Resources.
+
 The JSON Structure MUST look like the following:
 
 {
   "News": [
     {
       "Title": "",
-      "Summary": "",
-      "Link": ""
-    }
-  ],
-  "Opportunities": [
-    {
-      "Title": "",
-      "Date": "",
       "Summary": "",
       "Link": ""
     }
