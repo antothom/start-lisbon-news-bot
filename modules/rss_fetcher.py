@@ -6,9 +6,10 @@ from datetime import datetime
 from time import mktime
 
 class RSSFetcher:
-    def __init__(self, source_url: str, source_name: str):
+    def __init__(self, source_url: str, source_name: str, date_threshold: datetime = None):
         self.rss_url = source_url
         self.source_name = source_name
+        self.date_threshold = date_threshold
 
 
     def __format_rss_entry(self, entry: dict):
@@ -76,6 +77,12 @@ class RSSFetcher:
 
         # Convert the list of formatted entries into a DataFrame
         formatted_feed = pd.DataFrame(formatted_feed)
+
+        if self.date_threshold:
+            # Filter entries based on the date threshold
+            formatted_feed['published'] = formatted_feed['published'].dt.date
+            formatted_feed = formatted_feed[formatted_feed['published'] >= self.date_threshold]
+
 
         # Add the source name to the DataFrame
         formatted_feed['source'] = source_name
