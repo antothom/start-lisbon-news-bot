@@ -1,4 +1,3 @@
-from utils import utils
 import pandas as pd
 import feedparser
 import requests
@@ -10,6 +9,7 @@ class RSSFetcher:
     def __init__(self, source_url: str, source_name: str):
         self.rss_url = source_url
         self.source_name = source_name
+
 
     def __format_rss_entry(self, entry: dict):
         """

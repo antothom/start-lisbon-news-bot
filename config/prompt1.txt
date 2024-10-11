@@ -46,12 +46,13 @@ The JSON Structure MUST look like the following:
   "Events": [
     {
       "Title": "",
-      "Date": "",
+      "Start Date": "",
+      "End Date": "",
       "Summary": "",
       "Link": ""
     }
   ],
-  "Readings": [
+  "Resources": [
     {
       "Title": "",
       "Summary": "",
