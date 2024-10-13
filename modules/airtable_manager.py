@@ -38,12 +38,13 @@ class AirtableManager:
         })
         print("\033[92m" + "Event added successfully!" + "\033[0m")
 
-    def add_job(self, title, summary, link, source, published):
+    def add_job(self, position, company, location, link, source, published):
         print("------------------------")
-        print("AirtableManager - add_job: ", f"{title} - {summary[0:10]}...\nSource: {source}")
+        print("AirtableManager - add_job: ", f"{position} - {company}...\nSource: {source}")
         self.jobs_table.create({
-            'Title': title,
-            'Summary': summary,
+            'Position': position,
+            'Company': company,
+            'Location': location,
             'Link': link,
             'Source': source,
             'Published': published

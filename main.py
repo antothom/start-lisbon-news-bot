@@ -1,6 +1,7 @@
 import pandas as pd
 
 from modules.rss_fetcher import RSSFetcher
+from modules.api_fetcher import APIFetcher
 from modules.data_extractor import DataExtractor
 from modules.airtable_manager import AirtableManager
 from datetime import date
@@ -8,20 +9,24 @@ from datetime import timedelta
 
 
 def main():
-    feeds = pd.read_csv('config/newsletters.csv')
+    feeds_df = pd.read_csv('config/newsletters.csv')
 
-    feeds = dict(zip(feeds['name'], feeds['feed']))
+    feeds = {}
+    for i in feeds_df.index:
+        feeds[feeds_df.loc[i, 'name']] = (feeds_df.loc[i, 'feed'], feeds_df.loc[i, 'type'])
 
     fetched_data = {}
-
     for i in feeds:
-        fetcher = RSSFetcher(feeds[i], i)
+        if feeds[i][1] == 'RSS':
+            fetcher = RSSFetcher(feeds[i][0], i, date.today() - timedelta(days=14))
+        elif feeds[i][1] == 'API':
+            fetcher = APIFetcher(feeds[i][0], i, date.today() - timedelta(days=14))
         fetched_data[i] = fetcher.fetch()
 
     airtable_manager = AirtableManager()
 
     for i in fetched_data:
-        if i == 'Startup Portugal':
+        if i == 'Techstars Startup Digest Portugal':
             if fetched_data[i].empty:
                 print(f"\033[93mWARNING: No new data for {i}\033[0m")
                 continue
@@ -29,18 +34,19 @@ def main():
             prompt = open(prompt_filename, "r").read()
 
             news_df = pd.DataFrame(columns=['Title', 'Summary', 'Link', 'Source', 'Published'])
-            events_df = pd.DataFrame(columns=['Title', 'Summary', 'Link', 'Start Date', 'End Date', 'Source', 'Published'])
-            jobs_df = pd.DataFrame(columns=['Title', 'Summary', 'Link', 'Source', 'Published'])
+            events_df = pd.DataFrame(
+                columns=['Title', 'Summary', 'Link', 'Start Date', 'End Date', 'Source', 'Published'])
+            jobs_df = pd.DataFrame(columns=['Position', 'Company', 'Location', 'Link', 'Source', 'Published'])
             resources_df = pd.DataFrame(columns=['Title', 'Summary', 'Link', 'Source', 'Published'])
             all_dfs = {'News': news_df, 'Events': events_df, 'Jobs': jobs_df, 'Resources': resources_df}
 
             for j in fetched_data[i].index:
-                extractor = DataExtractor(fetched_data[i].loc[j, 'content'], fetched_data[i].loc[j, 'published'], fetched_data[i].loc[j, 'source'], prompt)
+                extractor = DataExtractor(fetched_data[i].loc[j, 'content'], fetched_data[i].loc[j, 'published'],
+                                          fetched_data[i].loc[j, 'source'], prompt)
                 extracted = extractor.extract()
                 curr_dfs = extractor.text_to_df(extracted)
                 for k in curr_dfs:
                     all_dfs[k] = pd.concat([all_dfs[k], curr_dfs[k]], ignore_index=True)
-
 
             for i in all_dfs:
                 for j in all_dfs[i].index:
@@ -59,8 +65,9 @@ def main():
                                                    all_dfs[i].loc[j, 'Source'],
                                                    all_dfs[i].loc[j, 'Published'].strftime('%Y-%m-%d'))
                     elif i == 'Jobs':
-                        airtable_manager.add_job(all_dfs[i].loc[j, 'Title'],
-                                                 all_dfs[i].loc[j, 'Summary'],
+                        airtable_manager.add_job(all_dfs[i].loc[j, 'Position'],
+                                                 all_dfs[i].loc[j, 'Company'],
+                                                 all_dfs[i].loc[j, 'Location'],
                                                  all_dfs[i].loc[j, 'Link'],
                                                  all_dfs[i].loc[j, 'Source'],
                                                  all_dfs[i].loc[j, 'Published'].strftime('%Y-%m-%d'))

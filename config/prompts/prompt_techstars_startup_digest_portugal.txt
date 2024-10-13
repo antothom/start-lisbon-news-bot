@@ -1,0 +1,38 @@
+The following content is a Newsletter with different Sections, which has to be formatted into a JSON format and hold the information about each part or sub-parts of the newsletter.
+
+In this case, the Newsletter is from Unicorn Factory Lisboa, a Lisbon-based incubator/accelerator. This organization publishes updates about the Portuguese startup ecosystem.
+
+Usually, the newsletter has the following structure:
+
+1. Introduction – Key highlights of what's happening in the ecosystem, such as events, highlighted news, and significant achievements. [Irrelevant]
+2. "Quote of the Day" – Quote that can be related to anything. [Irrelevant]
+3. "Events" – Upcoming conferences, webinars, demo days, and other events in the ecosystem. (Maps to "Events") [Relevant]
+4. "Local & International Applications" – Entrepreneurship related opportunities for startups and individuals. [Irrelevant]
+
+IMPORTANT: The events in the newsletter are always grouped by day, which is stated at the top of each group. If there is no specific date for an event, use the date of the section.
+IMPORTANT: Make sure that for each day, there are typically 2-5 Events. Make sure to capture ALL of them, which are written in english.
+Sometimes, the newsletter does not follow the typical structure and might be a special edition for example focusing just on one topic. In such cases, you should return an empty JSON structure.
+
+Ensure text is formatted properly:
+- Dates should be in a computer-readable format (e.g., YYYY-MM-DD).
+- Avoid text in all caps.
+- Hyperlinks should be included in the appropriate "Link" field.
+- Return only the required output with no extraneous text before or after the actual result.+
+
+Make sure you don’t return anything else but the wanted output. Text before or after the actual wanted result is undesired.
+
+The JSON Structure MUST look like the following:
+
+{
+  "Events": [
+    {
+      "Title": "",
+      "Start Date": "",
+      "End Date": "",
+      "Summary": "",
+      "Link": ""
+    }
+  ]
+}
+
+Raw HTML Content:
