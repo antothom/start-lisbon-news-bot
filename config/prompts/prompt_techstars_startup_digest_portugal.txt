@@ -31,6 +31,9 @@ The JSON Structure MUST look like the following:
       "End Date": "",
       "Summary": "",
       "Link": ""
+      "Location": ""
+      "Country:" "",
+      "City": ""
     }
   ]
 }

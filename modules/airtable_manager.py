@@ -11,8 +11,23 @@ class AirtableManager:
         self.events_table = self.api.table('appKbQuX1KuPkXDTP', 'tblWxehv7NNWtxKFP')
         self.jobs_table = self.api.table('appKbQuX1KuPkXDTP', 'tblWFHSJ5JMmPkbO7')
         self.resources_table = self.api.table('appKbQuX1KuPkXDTP', 'tbluJLuniJ0FrYjNu')
+        self.country_flags = {
+            'Portugal': '🇵🇹',
+            'Spain': '🇪🇸',
+            'France': '🇫🇷',
+            'Germany': '🇩🇪',
+            'United Kingdom': '🇬🇧',
+            'UK': '🇬🇧',
+            'USA': '🇺🇸',
+            'United States': '🇺🇸',
+            'Netherlands': '🇳🇱',
+            'Italy': '🇮🇹',
+            'Switzerland': '🇨🇭',
+            'Austria': '🇦🇹',
+            'Belgium': '🇧🇪',
+        }
 
-    def add_news(self, title, summary, link, source, published):
+    def add_news(self, title, summary, link, source, published, company, company_country, company_city):
         print("------------------------")
         print("AirtableManager - add_news: ", f"{title} - {summary[0:10]}... - Source: {source}")
         self.news_table.create({
@@ -20,11 +35,14 @@ class AirtableManager:
             'Summary': summary,
             'Link': link,
             'Source': source,
-            'Published': published
+            'Published': published,
+            'Company': company,
+            'Company_Country': self.get_country_with_flag(company_country),
+            'Company_City': company_city
         })
         print("\033[92m" + "News added successfully!" + "\033[0m")
 
-    def add_event(self, title, summary, link, start_date, end_date, source, published):
+    def add_event(self, title, summary, link, start_date, end_date, source, published, country, city):
         print("------------------------")
         print("AirtableManager - add_event: ", f"{title} - {summary[0:10]}...\nSource: {source}")
         self.events_table.create({
@@ -34,7 +52,9 @@ class AirtableManager:
             'Start Date': start_date,
             'End Date': end_date,
             'Source': source,
-            'Published': published
+            'Published': published,
+            'Country': country,
+            'City': city
         })
         print("\033[92m" + "Event added successfully!" + "\033[0m")
 
@@ -51,8 +71,6 @@ class AirtableManager:
         })
         print("\033[92m" + "Job added successfully!" + "\033[0m")
 
-
-
     def add_resource(self, title, summary, link, source, published):
         print("------------------------")
         print("AirtableManager - add_resource: ", f"{title} - {summary[0:10]}...\nSource: {source}")
@@ -65,4 +83,10 @@ class AirtableManager:
         })
         print("\033[92m" + "Resource added successfully!" + "\033[0m")
 
+    def get_country_with_flag(self, country):
+        if not country:
+            return ""
 
+        country = country.strip()
+        flag = self.country_flags.get(country, '🌍')
+        return f"{flag} {country}"
