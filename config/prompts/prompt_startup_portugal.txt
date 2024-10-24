@@ -27,6 +27,8 @@ The JSON Structure MUST look like the following:
       "Title": "",
       "Summary": "",
       "Link": ""
+      "Country:" "",
+      "City": ""
     }
   ],
   "Events": [
@@ -35,7 +37,8 @@ The JSON Structure MUST look like the following:
       "Start Date": "",
       "End Date": "",
       "Summary": "",
-      "Link": ""
+      "Link": "",
+      "Location": ""
     }
   ],
   "Resources": [
