@@ -13,9 +13,17 @@ Usually the Newsletter has the following structure:
 
 Sometimes, one might find a section called i.e. “Shameless Self Promotion” - this is unwanted and not relevant for this extraction.
 
-Make sure that text is formatted right. Text in caps is unwanted, dates should have a computer readable format etc…
-
 Make sure you don’t return anything else but the wanted output. Text before or after the actual wanted result is undesired.
+
+Ensure text is formatted properly:
+- Dates should be in a computer-readable format (e.g., YYYY-MM-DD).
+- Avoid text in all caps.
+- Hyperlinks should be included in the appropriate "Link" field.
+- For News entries about companies:
+  * Include the company's location (Company_Country and Company_City) where mentioned
+  * For company achievements or funding news, always extract the company's headquarters location
+  * If location is not explicitly mentioned but it's a Portuguese company, default to "Portugal" for Company_Country
+- Return only the required output with no extraneous text before or after the actual result.
 
 IMPORTANT: If the html does not start with "Opening Remarks" and does not follow the previously mentioned structure, return a JSON object just having a empty list for Events, News and Resources.
 
@@ -26,7 +34,10 @@ The JSON Structure MUST look like the following:
     {
       "Title": "",
       "Summary": "",
-      "Link": ""
+      "Link": "",
+      "Company: "",
+      "Company_Country": "",
+      "Company_City": ""
     }
   ],
   "Events": [
