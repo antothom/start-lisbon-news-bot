@@ -28,8 +28,6 @@ The JSON Structure MUST look like the following:
       "Title": "",
       "Summary": "",
       "Link": ""
-      "Country:" "",
-      "City": ""
     }
   ],
   "Events": [
@@ -40,6 +38,8 @@ The JSON Structure MUST look like the following:
       "Summary": "",
       "Link": ""
       "Location": ""
+      "Country:" "",
+      "City": ""
     }
   ],
   "Jobs": [
