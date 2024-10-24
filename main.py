@@ -34,7 +34,7 @@ def main():
 
         news_df = pd.DataFrame(columns=['Title', 'Summary', 'Link', 'Source', 'Published'])
         events_df = pd.DataFrame(
-            columns=['Title', 'Summary', 'Link', 'Start Date', 'End Date', 'Source', 'Published'])
+            columns=['Title', 'Summary', 'Link', 'Start Date', 'End Date', 'Source', 'Published', 'Country', 'City']),
         jobs_df = pd.DataFrame(columns=['Position', 'Company', 'Location', 'Link', 'Source', 'Published'])
         resources_df = pd.DataFrame(columns=['Title', 'Summary', 'Link', 'Source', 'Published'])
         all_dfs = {'News': news_df, 'Events': events_df, 'Jobs': jobs_df, 'Resources': resources_df}
@@ -62,7 +62,9 @@ def main():
                                                all_dfs[i].loc[j, 'Start Date'],
                                                all_dfs[i].loc[j, 'End Date'],
                                                all_dfs[i].loc[j, 'Source'],
-                                               all_dfs[i].loc[j, 'Published'].strftime('%Y-%m-%d'))
+                                               all_dfs[i].loc[j, 'Published'].strftime('%Y-%m-%d'),
+                                               all_dfs[i].loc[j, 'Country'],
+                                               all_dfs[i].loc[j, 'City'])
                 elif i == 'Jobs':
                     airtable_manager.add_job(all_dfs[i].loc[j, 'Position'],
                                              all_dfs[i].loc[j, 'Company'],

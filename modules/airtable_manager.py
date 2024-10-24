@@ -24,7 +24,7 @@ class AirtableManager:
         })
         print("\033[92m" + "News added successfully!" + "\033[0m")
 
-    def add_event(self, title, summary, link, start_date, end_date, source, published):
+    def add_event(self, title, summary, link, start_date, end_date, source, published, country, city):
         print("------------------------")
         print("AirtableManager - add_event: ", f"{title} - {summary[0:10]}...\nSource: {source}")
         self.events_table.create({
@@ -34,7 +34,9 @@ class AirtableManager:
             'Start Date': start_date,
             'End Date': end_date,
             'Source': source,
-            'Published': published
+            'Published': published,
+            'Country': country,
+            'City': city
         })
         print("\033[92m" + "Event added successfully!" + "\033[0m")
 
@@ -50,8 +52,6 @@ class AirtableManager:
             'Published': published
         })
         print("\033[92m" + "Job added successfully!" + "\033[0m")
-
-
 
     def add_resource(self, title, summary, link, source, published):
         print("------------------------")
