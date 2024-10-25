@@ -11,12 +11,15 @@ Usually the Newsletter has the following structure:
 5. "👔 Internships & job offers" – A listing of internships and job opportunities within the startup and VC space. (Maps to "Jobs". Internships should have "Internship" and Jobs "Full-Time" as prefix in the Title) [Relevant]
 6. "👀 In case you missed it" – Recaps of past important announcements or content from previous newsletters. [Irrelevant]
 
-
 Ensure text is formatted properly:
 - Dates should be in a computer-readable format (e.g., YYYY-MM-DD).
 - Avoid text in all caps.
 - Hyperlinks should be included in the appropriate "Link" field.
-- Return only the required output with no extraneous text before or after the actual result.+
+- For News entries about companies:
+  * Include the company's location (Company_Country and Company_City) where mentioned
+  * For company achievements or funding news, always extract the company's headquarters location
+  * If location is not explicitly mentioned but it's a Portuguese company, default to "Portugal" for Company_Country
+- Return only the required output with no extraneous text before or after the actual result.
 
 Make sure you don’t return anything else but the wanted output. Text before or after the actual wanted result is undesired.
 
@@ -30,6 +33,9 @@ The JSON Structure MUST look like the following:
       "Title": "",
       "Summary": "",
       "Link": "",
+      "Company: "",
+      "Company_Country": "",
+      "Company_City": ""
     }
   ],
   "Jobs": [

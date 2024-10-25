@@ -32,9 +32,10 @@ def main():
         prompt_filename = "config/prompts/prompt_" + i.lower().replace(" ", "_") + ".txt"
         prompt = open(prompt_filename, "r").read()
 
-        news_df = pd.DataFrame(columns=['Title', 'Summary', 'Link', 'Source', 'Published'])
+        news_df = pd.DataFrame(
+            columns=['Title', 'Summary', 'Link', 'Source', 'Published', 'Company', 'Company_Country', 'Company_City'])
         events_df = pd.DataFrame(
-            columns=['Title', 'Summary', 'Link', 'Start Date', 'End Date', 'Source', 'Published', 'Country', 'City']),
+            columns=['Title', 'Summary', 'Link', 'Start Date', 'End Date', 'Source', 'Published', 'Country', 'City'])
         jobs_df = pd.DataFrame(columns=['Position', 'Company', 'Location', 'Link', 'Source', 'Published'])
         resources_df = pd.DataFrame(columns=['Title', 'Summary', 'Link', 'Source', 'Published'])
         all_dfs = {'News': news_df, 'Events': events_df, 'Jobs': jobs_df, 'Resources': resources_df}
@@ -54,7 +55,10 @@ def main():
                                               all_dfs[i].loc[j, 'Summary'],
                                               all_dfs[i].loc[j, 'Link'],
                                               all_dfs[i].loc[j, 'Source'],
-                                              all_dfs[i].loc[j, 'Published'].strftime('%Y-%m-%d'))
+                                              all_dfs[i].loc[j, 'Published'].strftime('%Y-%m-%d'),
+                                              all_dfs[i].loc[j, 'Company'],
+                                              all_dfs[i].loc[j, 'Company_Country'],
+                                              all_dfs[i].loc[j, 'Company_City'])
                 elif i == 'Events':
                     airtable_manager.add_event(all_dfs[i].loc[j, 'Title'],
                                                all_dfs[i].loc[j, 'Summary'],
