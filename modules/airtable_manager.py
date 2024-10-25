@@ -26,8 +26,14 @@ class AirtableManager:
             'Austria': '🇦🇹',
             'Belgium': '🇧🇪',
         }
+        self.news_category_emojis = {
+            'Funding': '💰',
+            'Acquisitions': '🤝',
+            'Expansion': '🚀',
+            'General News': '📰'
+        }
 
-    def add_news(self, title, summary, link, source, published, company, company_country, company_city):
+    def add_news(self, title, summary, link, source, published, company, company_country, company_city, category):
         print("------------------------")
         print("AirtableManager - add_news: ", f"{title} - {summary[0:10]}... - Source: {source}")
         self.news_table.create({
@@ -38,7 +44,8 @@ class AirtableManager:
             'Published': published,
             'Company': company,
             'Company_Country': self.get_country_with_flag(company_country),
-            'Company_City': company_city
+            'Company_City': company_city,
+            'Category': self.get_category_with_emoji(category)
         })
         print("\033[92m" + "News added successfully!" + "\033[0m")
 
@@ -90,3 +97,10 @@ class AirtableManager:
         country = country.strip()
         flag = self.country_flags.get(country, '🌍')
         return f"{flag} {country}"
+
+    def get_category_with_emoji(self, category):
+        if not category:
+            return ""
+        category = category.strip()
+        emoji = self.news_category_emojis.get(category, '📰')
+        return f"{emoji} {category}"

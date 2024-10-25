@@ -11,6 +11,12 @@ Usually the Newsletter has the following structure:
 5. "👔 Internships & job offers" – A listing of internships and job opportunities within the startup and VC space. (Maps to "Jobs". Internships should have "Internship" and Jobs "Full-Time" as prefix in the Title) [Relevant]
 6. "👀 In case you missed it" – Recaps of past important announcements or content from previous newsletters. [Irrelevant]
 
+For the News section, categorize each entry into one of these categories:
+- "Funding": For fundraising rounds, investments, etc.
+- "Acquisitions": For mergers, acquisitions, company sales
+- "Expansion": For geographic expansion, new market entries, significant growth
+- "General News": For other startup/company news that don't fit above categories
+
 Ensure text is formatted properly:
 - Dates should be in a computer-readable format (e.g., YYYY-MM-DD).
 - Avoid text in all caps.
@@ -35,7 +41,8 @@ The JSON Structure MUST look like the following:
       "Link": "",
       "Company: "",
       "Company_Country": "",
-      "Company_City": ""
+      "Company_City": "",
+      "Category:" ""
     }
   ],
   "Jobs": [
