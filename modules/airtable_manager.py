@@ -25,6 +25,17 @@ class AirtableManager:
             'Switzerland': '🇨🇭',
             'Austria': '🇦🇹',
             'Belgium': '🇧🇪',
+            'Sweden': '🇸🇪',
+            'Czech Republic': '🇨🇿',
+            'Norway': '🇳🇴',
+            'Ireland': '🇮🇪',
+            'Denmark': '🇩🇰',
+            'Finland': '🇫🇮',
+            'Estonia': '🇪🇪',
+            'Poland': '🇵🇱',
+            'Lithuania': '🇱🇹',
+            'Latvia': '🇱🇻',
+            'Romania': '🇷🇴',
         }
         self.news_category_emojis = {
             'Funding': '💰',
