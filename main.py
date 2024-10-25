@@ -5,6 +5,7 @@ from modules.api_fetcher import APIFetcher
 from modules.data_extractor import DataExtractor
 from modules.airtable_manager import AirtableManager
 from datetime import date
+import time
 from datetime import timedelta
 
 def main():
@@ -94,5 +95,8 @@ def main():
                                                   all_dfs[i].loc[j, 'Source'],
                                                   all_dfs[i].loc[j, 'Published'].strftime('%Y-%m-%d'))
 
+                time.sleep(1)
+
 if __name__ == "__main__":
     main()
+    print("Success")

@@ -43,6 +43,8 @@ class RSSFetcher:
         config = html2text.HTML2Text()
         entry_dict['content'] = config.handle(entry_dict['content'])
 
+
+
         return entry_dict
 
     def fetch(self):
