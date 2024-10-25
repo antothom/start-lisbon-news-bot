@@ -53,7 +53,7 @@ class AirtableManager:
             'End Date': end_date,
             'Source': source,
             'Published': published,
-            'Country': country,
+            'Country': self.get_country_with_flag(country),
             'City': city
         })
         print("\033[92m" + "Event added successfully!" + "\033[0m")
