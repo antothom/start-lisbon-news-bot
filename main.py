@@ -60,11 +60,22 @@ def main():
                                               all_dfs[i].loc[j, 'Company_City'],
                                               all_dfs[i].loc[j, 'Category'])
                 elif i == 'Events':
+                    try:
+                        start_date = pd.to_datetime(all_dfs[i].loc[j, 'Start Date']).strftime('%Y-%m-%d') if pd.notna(
+                            all_dfs[i].loc[j, 'Start Date']) else None
+                    except:
+                        start_date = all_dfs[i].loc[j, 'Published'].strftime('%Y-%m-%d')
+                    try:
+                        end_date = pd.to_datetime(all_dfs[i].loc[j, 'End Date']).strftime('%Y-%m-%d') if pd.notna(
+                            all_dfs[i].loc[j, 'End Date']) else None
+                    except:
+                        end_date = None
+
                     airtable_manager.add_event(all_dfs[i].loc[j, 'Title'],
                                                all_dfs[i].loc[j, 'Summary'],
                                                all_dfs[i].loc[j, 'Link'],
-                                               all_dfs[i].loc[j, 'Start Date'],
-                                               all_dfs[i].loc[j, 'End Date'],
+                                               start_date,
+                                               end_date,
                                                all_dfs[i].loc[j, 'Source'],
                                                all_dfs[i].loc[j, 'Published'].strftime('%Y-%m-%d'),
                                                all_dfs[i].loc[j, 'Country'],
