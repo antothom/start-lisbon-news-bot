@@ -15,6 +15,12 @@ Sometimes, one might find a section called i.e. “Shameless Self Promotion” -
 
 Make sure you don’t return anything else but the wanted output. Text before or after the actual wanted result is undesired.
 
+For the News section, categorize each entry into one of these categories:
+- "Funding": For fundraising rounds, investments, etc.
+- "Acquisitions": For mergers, acquisitions, company sales
+- "Expansion": For geographic expansion, new market entries, significant growth
+- "General News": For other startup/company news that don't fit above categories
+
 Ensure text is formatted properly:
 - Dates should be in a computer-readable format (e.g., YYYY-MM-DD).
 - Avoid text in all caps.
@@ -37,7 +43,8 @@ The JSON Structure MUST look like the following:
       "Link": "",
       "Company: "",
       "Company_Country": "",
-      "Company_City": ""
+      "Company_City": "",
+      "Category:" ""
     }
   ],
   "Events": [

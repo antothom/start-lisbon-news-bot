@@ -12,6 +12,12 @@ Usually, the newsletter has the following structure:
 
 Sometimes, the newsletter does not follow the typical structure and might be a special edition for example focusing just on one topic. In such cases, you should return an empty JSON structure.
 
+For the News section, categorize each entry into one of these categories:
+- "Funding": For fundraising rounds, investments, etc.
+- "Acquisitions": For mergers, acquisitions, company sales
+- "Expansion": For geographic expansion, new market entries, significant growth
+- "General News": For other startup/company news that don't fit above categories
+
 Ensure text is formatted properly:
 - Dates should be in a computer-readable format (e.g., YYYY-MM-DD).
 - Avoid text in all caps.
@@ -34,7 +40,8 @@ The JSON Structure MUST look like the following:
       "Link": "",
       "Company: "",
       "Company_Country:" "",
-      "Company_City": ""
+      "Company_City": "",
+      "Category:" ""
     }
   ],
   "Events": [
