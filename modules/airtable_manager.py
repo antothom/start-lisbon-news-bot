@@ -95,20 +95,6 @@ class AirtableManager:
         except Exception as e:
             print("\033[91m" + f"Error: {position} | {company} - {e}" + "\033[0m")
 
-    def add_resource(self, title, summary, link, source, published):
-        print("------------------------")
-        print("AirtableManager - add_resource: ", f"{title} - {summary[0:10]}...\nSource: {source}")
-        try:
-            self.resources_table.create({
-                'Title': title,
-                'Summary': summary,
-                'Link': link,
-                'Source': source,
-                'Published': published
-            })
-            print("\033[92m" + "Resource added successfully!" + "\033[0m")
-        except Exception as e:
-            print("\033[91m" + f"Error adding resource: {title} - {e}" + "\033[0m")
 
 
     def get_country_with_flag(self, country):

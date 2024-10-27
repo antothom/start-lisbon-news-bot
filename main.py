@@ -88,12 +88,6 @@ def main():
                                              all_dfs[i].loc[j, 'Link'],
                                              all_dfs[i].loc[j, 'Source'],
                                              all_dfs[i].loc[j, 'Published'].strftime('%Y-%m-%d'))
-                elif i == 'Resources':
-                    airtable_manager.add_resource(all_dfs[i].loc[j, 'Title'],
-                                                  all_dfs[i].loc[j, 'Summary'],
-                                                  all_dfs[i].loc[j, 'Link'],
-                                                  all_dfs[i].loc[j, 'Source'],
-                                                  all_dfs[i].loc[j, 'Published'].strftime('%Y-%m-%d'))
 
                 time.sleep(1)
 
