@@ -55,6 +55,7 @@ class AirtableManager:
             'Published': published,
             'Company': company,
             'Company_Country': self.get_country_with_flag(company_country),
+            'Company_Country_flag': self.get_only_country_flag(company_country),
             'Company_City': company_city,
             'Category': self.get_category_with_emoji(category)
         })
@@ -73,6 +74,7 @@ class AirtableManager:
                 'Source': source,
                 'Published': published,
                 'Country': self.get_country_with_flag(country),
+                'Country_flag': self.get_only_country_flag(country),
                 'City': city
             })
             print("\033[92m" + "Event added successfully!" + "\033[0m")
@@ -104,6 +106,13 @@ class AirtableManager:
         country = country.strip()
         flag = self.country_flags.get(country, '🌍')
         return f"{flag} {country}"
+
+    def get_only_country_flag(self, country):
+        if not country:
+            return ""
+
+        flag = self.country_flags.get(country, '🌍')
+        return f"{flag}"
 
     def get_category_with_emoji(self, category):
         if not category:
