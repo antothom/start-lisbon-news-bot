@@ -50,10 +50,11 @@ def main():
                 all_dfs[k] = pd.concat([all_dfs[k], curr_dfs[k]], ignore_index=True)
 
         for i in all_dfs:
+            all_dfs[i]['Link'] = all_dfs[i]['Link'].replace('', np.nan)
+            all_dfs[i].dropna(subset=['Link'], inplace=True)
             for j in all_dfs[i].index:
                 if i == 'News':
-                    all_dfs[i]['Link'].replace('', np.nan, inplace=True)
-                    all_dfs[i].dropna(subset=['Link'], inplace=True)
+
                     airtable_manager.add_news(all_dfs[i].loc[j, 'Title'],
                                               all_dfs[i].loc[j, 'Summary'],
                                               all_dfs[i].loc[j, 'Link'],
@@ -75,8 +76,7 @@ def main():
                     except:
                         end_date = None
 
-                    all_dfs[i]['Link'].replace('', np.nan, inplace=True)
-                    all_dfs[i].dropna(subset=['Link'], inplace=True)
+
                     airtable_manager.add_event(all_dfs[i].loc[j, 'Title'],
                                                all_dfs[i].loc[j, 'Summary'],
                                                all_dfs[i].loc[j, 'Link'],
@@ -87,8 +87,7 @@ def main():
                                                all_dfs[i].loc[j, 'Country'],
                                                all_dfs[i].loc[j, 'City'])
                 elif i == 'Jobs':
-                    all_dfs[i]['Link'].replace('', np.nan, inplace=True)
-                    all_dfs[i].dropna(subset=['Link'], inplace=True)
+
                     airtable_manager.add_job(all_dfs[i].loc[j, 'Position'],
                                              all_dfs[i].loc[j, 'Company'],
                                              all_dfs[i].loc[j, 'Location'],
@@ -100,4 +99,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-    print("Success")
