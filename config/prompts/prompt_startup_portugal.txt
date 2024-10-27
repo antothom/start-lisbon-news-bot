@@ -9,7 +9,7 @@ Usually the Newsletter has the following structure:
 3. “Opportunity Radar” - Upcoming Innovation Programs, Challenges, Hackathons etc. in the Portuguese Startup Ecosystem (Relevant - Should be classified as Events)
 4. “Events for your agenda” - Upcoming Conferences or Events in the Portuguese Startup Ecosystem (Relevant)
 5. “Memeable” - Memes (Not needed)
-6. “Readable” - Interesting Readings about the worldwide Startup Scene (Relevant)
+6. “Readable” - Interesting Readings about the worldwide Startup Scene (Not needed)
 
 Sometimes, one might find a section called i.e. “Shameless Self Promotion” - this is unwanted and not relevant for this extraction.
 
@@ -57,13 +57,6 @@ The JSON Structure MUST look like the following:
       "Location": ""
       "Country:" "",
       "City": ""
-    }
-  ],
-  "Resources": [
-    {
-      "Title": "",
-      "Summary": "",
-      "Link": ""
     }
   ]
 }
