@@ -7,6 +7,7 @@ from modules.airtable_manager import AirtableManager
 from datetime import date
 import time
 from datetime import timedelta
+import numpy as np
 
 def main():
     feeds_df = pd.read_csv('config/newsletters.csv')
@@ -50,8 +51,9 @@ def main():
 
         for i in all_dfs:
             for j in all_dfs[i].index:
-                all_dfs[i].dropna(subset=['Link'], inplace=True)
                 if i == 'News':
+                    all_dfs[i]['Link'].replace('', np.nan, inplace=True)
+                    all_dfs[i].dropna(subset=['Link'], inplace=True)
                     airtable_manager.add_news(all_dfs[i].loc[j, 'Title'],
                                               all_dfs[i].loc[j, 'Summary'],
                                               all_dfs[i].loc[j, 'Link'],
@@ -73,6 +75,7 @@ def main():
                     except:
                         end_date = None
 
+                    all_dfs[i]['Link'].replace('', np.nan, inplace=True)
                     all_dfs[i].dropna(subset=['Link'], inplace=True)
                     airtable_manager.add_event(all_dfs[i].loc[j, 'Title'],
                                                all_dfs[i].loc[j, 'Summary'],
@@ -84,6 +87,7 @@ def main():
                                                all_dfs[i].loc[j, 'Country'],
                                                all_dfs[i].loc[j, 'City'])
                 elif i == 'Jobs':
+                    all_dfs[i]['Link'].replace('', np.nan, inplace=True)
                     all_dfs[i].dropna(subset=['Link'], inplace=True)
                     airtable_manager.add_job(all_dfs[i].loc[j, 'Position'],
                                              all_dfs[i].loc[j, 'Company'],
